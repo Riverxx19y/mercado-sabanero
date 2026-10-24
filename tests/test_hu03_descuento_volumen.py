@@ -19,3 +19,13 @@ def test_subtotal_de_200000_aplica_descuento_del_5_por_ciento():
     resultado = porcentaje_descuento_volumen(subtotal)
     # Assert
     assert resultado == 5
+
+    
+
+def test_subtotal_de_500000_aplica_descuento_del_10_por_ciento():
+    # Arrange
+    subtotal = 500_000
+    # Act
+    resultado = porcentaje_descuento_volumen(subtotal)
+    # Assert
+    assert resultado == 10

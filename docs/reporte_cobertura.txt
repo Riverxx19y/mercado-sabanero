@@ -1,0 +1,35 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/claude/mercado_sabanero
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0
+collected 70 items
+
+tests/test_hu01_carrito.py ..............                                [ 20%]
+tests/test_hu02_iva.py ............                                      [ 37%]
+tests/test_hu03_descuento_volumen.py .........                           [ 50%]
+tests/test_hu04_cupones.py ...........                                   [ 65%]
+tests/test_hu05_envio_y_total.py ............                            [ 82%]
+tests/test_hu06_puntos.py ............                                   [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+src/mercado_sabanero/__init__.py          0      0   100%
+src/mercado_sabanero/carrito.py          28      0   100%
+src/mercado_sabanero/cupones.py          20      0   100%
+src/mercado_sabanero/descuentos.py        8      0   100%
+src/mercado_sabanero/envio.py            14      0   100%
+src/mercado_sabanero/errores.py           6      0   100%
+src/mercado_sabanero/inventario.py        3      0   100%
+src/mercado_sabanero/liquidacion.py      27      0   100%
+src/mercado_sabanero/modelos.py          34      0   100%
+src/mercado_sabanero/puntos.py            5      0   100%
+src/mercado_sabanero/redondeo.py          2      0   100%
+-------------------------------------------------------------------
+TOTAL                                   147      0   100%
+Coverage HTML written to dir htmlcov
+============================== 70 passed in 0.27s ==============================

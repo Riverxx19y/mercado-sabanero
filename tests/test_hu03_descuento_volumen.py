@@ -1,31 +1,23 @@
 """HU-03. Descuento por volumen."""
+import pytest
+
 from mercado_sabanero.descuentos import porcentaje_descuento_volumen
 
 
-def test_subtotal_menor_a_200000_no_aplica_descuento():
-    # Arrange
-    subtotal = 199_999
+@pytest.mark.parametrize(
+    "subtotal, porcentaje",
+    [
+        (0, 0),
+        (199_999, 0),
+        (200_000, 5),
+        (499_999, 5),
+        (500_000, 10),
+        (1_000_000, 10),
+    ],
+)
+def test_porcentaje_de_descuento_segun_subtotal(subtotal, porcentaje):
+    # Arrange: subtotal y porcentaje esperado vienen de la parametrización
     # Act
     resultado = porcentaje_descuento_volumen(subtotal)
     # Assert
-    assert resultado == 0
-
-    
-
-def test_subtotal_de_200000_aplica_descuento_del_5_por_ciento():
-    # Arrange
-    subtotal = 200_000
-    # Act
-    resultado = porcentaje_descuento_volumen(subtotal)
-    # Assert
-    assert resultado == 5
-
-    
-
-def test_subtotal_de_500000_aplica_descuento_del_10_por_ciento():
-    # Arrange
-    subtotal = 500_000
-    # Act
-    resultado = porcentaje_descuento_volumen(subtotal)
-    # Assert
-    assert resultado == 10
+    assert resultado == porcentaje

@@ -12,9 +12,9 @@ def _normalizar(texto: str) -> str:
     return sin_tildes.strip().lower()
 
 
-def costo_envio(municipio: str, base_con_iva: int) -> int:
+def costo_envio(municipio: str, base_con_iva: int, cupon_envio_gratis: bool = False) -> int:
     """base_con_iva: suma de los productos cuya tarifa de IVA es mayor que 0."""
-    if base_con_iva >= UMBRAL_ENVIO_GRATIS:
+    if cupon_envio_gratis or base_con_iva >= UMBRAL_ENVIO_GRATIS:
         return 0
     if _normalizar(municipio) == "sincelejo":
         return COSTO_SINCELEJO

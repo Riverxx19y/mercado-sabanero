@@ -4,10 +4,7 @@ from datetime import date
 from .carrito import Carrito
 from .descuentos import porcentaje_descuento_volumen
 from .modelos import Categoria, Liquidacion
-
-
-def _redondear(numerador: int, denominador: int) -> int:
-    return (2 * numerador + denominador) // (2 * denominador)
+from .redondeo import dividir_redondeado
 
 
 def liquidar(
@@ -19,9 +16,10 @@ def liquidar(
 ) -> Liquidacion:
     subtotal = carrito.subtotal
     porcentaje = porcentaje_descuento_volumen(subtotal)
-    descuento = _redondear(subtotal * porcentaje, 100)
+    descuento = dividir_redondeado(subtotal * porcentaje, 100)
+    # El IVA se calcula sobre el valor de cada producto ya con descuento.
     iva = sum(
-        _redondear(i.subtotal * (100 - porcentaje) * i.producto.tarifa_iva, 10_000)
+        dividir_redondeado(i.subtotal * (100 - porcentaje) * i.producto.tarifa_iva, 10_000)
         for i in carrito.items
     )
     total = subtotal - descuento + iva
